@@ -54,7 +54,3 @@ for index, row in df.iterrows():
 for i in list:
 	print(i)
 
-# TODO: checking for if the canvas last name doesn't match the csv
-# TODO: make this a class
-# TODO: make the file name a command line argument with sys
-# TODO: use Submissions object from Canvas API to be able to change grade according to what the calculated grade ended up being
