@@ -2,12 +2,12 @@ import csv
 import pandas
 from canvasapi import Canvas
 import os
+import sys
 
-
-csv_file = "UFLCOP3503FoxFall2018_report_2018-10-07_2359.csv"
+csv_file = sys.argv[1] 
 df = pandas.read_csv(csv_file)
-df.insert(loc=0, column='Calculated grade', value = df['20.5 - Lab (20)']*25/100)
-df.drop(columns=['Primary email', 'Participation total (0)', 'Total (20)', 'Challenge total (0)'])
+df.insert(loc=0, column='Calculated grade', value = df['20.4 - Lab (25)']*25/100)
+df.drop(columns=['Primary email', 'Participation total (0)', 'Total (25)', 'Challenge total (0)'])
 
 API_URL = os.environ['API_URL']
 API_KEY = os.environ['API_KEY']
@@ -39,18 +39,21 @@ section_1889 = sections[11]
 # section_MISC = sections[18]
 
 enrollments = []
-section_number = section_1889
+my_sections = [section_1889, section_141B, section_141D]
 
-for i in course.get_section(section_number).get_enrollments():
-	enrollments.append(i.user['sortable_name'].split(','))
+for each_section in my_sections:
+	section_number = each_section
+	for student in course.get_section(section_number).get_enrollments():
+		if student.user['sortable_name'] != 'Student, Test':
+			enrollments.append(student.user['sortable_name'].split(','))
 
 gradedList = []
 
-for index, row in df.iterrows():
-	for j in enrollments:
-		if (row['Last name'] == j[0]):
-			list.append([j[0], j[1], row['Calculated grade']])
-
-for i in list:
+for index, student in df.iterrows():
+	for canvas in enrollments:
+		if (student['Last name'] == canvas[0]):
+			gradedList.append([canvas[0], canvas[1], student['Calculated grade']])	
+for i in gradedList:
 	print(i)
+
 
