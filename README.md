@@ -21,6 +21,4 @@ Also you might have to change the scale and the assignment title based on what y
 * checking if the canvas last name doesn't match the csv
 * make this a class with functions
 * use Submissions object from Canvas API to be able to change grade according to what the calculated grade ended up being
-<<<<<<< HEAD
 * ~~fix bug where students at the end of the list are printed 2-3 times~~
->>>>>>> ca32906c502f751d2ef4572cab7b834afca85f3f
