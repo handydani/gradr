@@ -15,9 +15,10 @@ Simple program which takes in a CSV file from zylabs and uses the canvas API to 
 
 Reminder to change the sections to whatever your sections are!
 
+Also you might have to change the scale and the assignment title based on what you're grading
 ## TODO
 
 * checking if the canvas last name doesn't match the csv
 * make this a class with functions
 * use Submissions object from Canvas API to be able to change grade according to what the calculated grade ended up being
-* fix bug where students at the end of the list are printed 2-3 times
+* ~~fix bug where students at the end of the list are printed 2-3 times~~
